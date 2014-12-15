@@ -1,5 +1,5 @@
 ServerRoot "<%= ENV['OPENSHIFT_PHP_DIR'] %>"
-DocumentRoot "<%= "#{ENV['OPENSHIFT_REPO_DIR']}/php" %>"
+DocumentRoot "<%= ENV['OPENSHIFT_REPO_DIR'] %>"
 Listen <%= "#{ENV['OPENSHIFT_PHP_IP']}:#{ENV['OPENSHIFT_PHP_PORT']}" %>
 User  <%= ENV['OPENSHIFT_GEAR_UUID'] %>
 Group <%= ENV['OPENSHIFT_GEAR_UUID'] %>
@@ -8,9 +8,9 @@ CustomLog "<%= "|/usr/sbin/rotatelogs #{ENV['OPENSHIFT_PHP_DIR']}/logs/access_lo
 <IfVersion >= 2.4>
 DefaultRuntimeDir "<%= "#{ENV['OPENSHIFT_PHP_DIR']}/run"%>"
 </IfVersion>
-php_value include_path "<%= ".:#{ENV['OPENSHIFT_REPO_DIR']}/libs/:#{ENV['OPENSHIFT_PHP_DIR']}/phplib/pear/pear/php/:/usr/share/pear/"%>"
+php_value include_path "<%= ".:#{ENV['OPENSHIFT_PHP_DIR']}/phplib/pear/pear/php/:/usr/share/pear/"%>"
 
-<Directory "<%= "#{ENV['OPENSHIFT_REPO_DIR']}/php" %>">
+<Directory "<%= ENV['OPENSHIFT_REPO_DIR'] %>">
   AllowOverride All
 </Directory>
 
